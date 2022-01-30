@@ -25,20 +25,19 @@ class DatabaseHelper {
   }
 
   //function for register products
-  void addDataProducto(String _nameController, String _priceController,
-      String _stockController) async {
+  void addDataPost(String _usernameController, String _bodyController,
+      String _imageController) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'token';
     final value = prefs.get(key) ?? 0;
 
-    // String myUrl = "$serverUrl/api";
     String myUrl = "";
     final response = await http.post(myUrl, headers: {
       'Accept': 'application/json'
     }, body: {
-      "name": "$_nameController",
-      "price": "$_priceController",
-      "stock": "$_stockController"
+      "username": "$_usernameController",
+      "body": "$_bodyController",
+      "image": "$_imageController"
     });
     status = response.body.contains('error');
 
@@ -53,8 +52,7 @@ class DatabaseHelper {
   }
 
   //function for update or put
-  void editarProduct(
-      String _id, String name, String price, String stock) async {
+  void editarProduct(String _id, String name, String body, String image) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'token';
     final value = prefs.get(key) ?? 0;

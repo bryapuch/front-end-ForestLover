@@ -13,7 +13,7 @@ class _ListProductsState extends State<ListProducts> {
   List data;
 
   Future<List> getData() async {
-    final response = await http.get('http://localhost:3000/post');
+    final response = await http.get('http://localhost:3000/api/publicaction');
     return json.decode(response.body);
   }
 
